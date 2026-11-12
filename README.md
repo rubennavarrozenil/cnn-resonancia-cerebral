@@ -2,7 +2,7 @@
 
 Entrenamos una red neuronal convolucional (CNN) para clasificar cortes 2D de resonancia magnética cerebral en cuatro categorías. La demo permite explorar los aciertos y los errores de la CNN en los **990 cortes reservados para prueba**. Por ejemplo, **9 de los 231 cortes etiquetados como meningioma** recibieron la predicción «Sin tumor» (3.90 %).
 
-[Leer el informe completo](docs/informe.pdf)
+[Explorar la demo en Streamlit](https://cnn-resonancia-cerebral.streamlit.app/) · [Leer el informe completo](docs/informe.pdf)
 
 ## Autoría
 
