@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "name": "Brain Tumor (MRI Scans)",
+    "slug": "rm1000/brain-tumor-mri-scans",
+    "version": 1
+  },
+  "run": {
+    "seed": 42,
+    "epoch": 15,
+    "split": "test",
+    "test_count": 990
+  },
+  "class_order": ["glioma", "healthy", "meningioma", "pituitary"],
+  "matrix": [
+    [225, 0, 16, 2],
+    [1, 246, 5, 3],
+    [3, 9, 209, 10],
+    [0, 0, 0, 261]
+  ],
+  "sources": [
+    {
+      "reference": "A1",
+      "file": "Microproyecto_CNN_Entrega_Final(8).ipynb",
+      "location": "E3.1, salida de la matriz de confusión",
+      "sha256": "8c2b7f6abf3672475843bd6d852908a218b07b6c286a8c31fdd4991bbb259aef"
+    },
+    {
+      "reference": "A2",
+      "file": "Informe_Microproyecto_CNN_Final(7).pdf",
+      "location": "Página 2, Figura 3 y Tabla II",
+      "sha256": "aa816921c2a44830207fc02fb117fd062fcbc6c2cbcadc02288de4ed3d6ccb80"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+/* Ajusta el espacio del contenedor de Streamlit para este único punto de entrada. */
+.stMainBlockContainer {
+  max-width: 74rem;
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .stMainBlockContainer {
+    padding-top: 2.8rem;
+    padding-inline: .75rem;
+  }
+}

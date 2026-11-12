@@ -1,0 +1,100 @@
+<div class="evaluation" lang="es-MX">
+  <header class="intro">
+    <h1>Clasificación de cortes de resonancia cerebral</h1>
+    <p>Entrenamos una CNN para clasificar cortes 2D de resonancia magnética cerebral en cuatro categorías (glioma, sin tumor, meningioma e hipofisario). Evaluamos sus predicciones en <strong id="test-count"></strong> cortes reservados para prueba.</p>
+  </header>
+
+  <section class="results" aria-labelledby="results-title">
+    <h2 id="results-title">Resultados en prueba</h2>
+    <dl class="metrics">
+      <div>
+        <dt>Exactitud de la CNN</dt>
+        <dd><strong id="accuracy"></strong><span><span id="correct"></span> aciertos</span></dd>
+      </div>
+      <div>
+        <dt>Exactitud de la regla de referencia</dt>
+        <dd><strong id="baseline-accuracy"></strong><span>Predice hipofisario, la clase más frecuente en entrenamiento.</span></dd>
+      </div>
+      <div>
+        <dt>F1 macro de la CNN</dt>
+        <dd><strong id="macro-f1"></strong><span>Promedia el F1 de las cuatro categorías con el mismo peso.</span></dd>
+      </div>
+    </dl>
+    <p class="results-note">La CNN y la regla se evaluaron en los mismos <span id="comparison-count"></span> cortes de prueba.</p>
+  </section>
+
+  <div class="workspace">
+    <section class="card matrix-card" aria-labelledby="matrix-title">
+      <h2 id="matrix-title">Matriz de confusión</h2>
+      <p class="instructions">Selecciona una celda para comparar la etiqueta con la predicción.</p>
+      <fieldset class="matrix-view" id="matrix-view">
+        <legend>Vista de la matriz</legend>
+        <div class="view-options">
+          <label><input type="radio" name="matrix-view" id="counts-view" value="counts" checked> Conteos</label>
+          <label><input type="radio" name="matrix-view" id="percentages-view" value="percentages"> % dentro de cada clase real</label>
+        </div>
+      </fieldset>
+      <table aria-labelledby="matrix-title">
+        <colgroup><col class="row-column"></colgroup>
+        <colgroup><col span="4"></colgroup>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="colgroup" colspan="4" class="axis predicted-axis">Predicción del modelo <span aria-hidden="true">→</span></th>
+          </tr>
+          <tr id="class-columns">
+            <td class="axis real-axis">Clase real <span aria-hidden="true">↓</span></td>
+          </tr>
+        </thead>
+        <tbody id="matrix-body"></tbody>
+      </table>
+      <p class="matrix-note">La diagonal reúne los aciertos. El sombreado representa el conteo.</p>
+    </section>
+
+    <section class="card detail-card" id="detail-card" aria-labelledby="detail-title">
+      <h2 id="detail-title" tabindex="-1">Detalle de la celda</h2>
+      <p id="empty-detail" class="empty-detail">Elige una celda para ver el conteo y su porcentaje dentro de la clase real.</p>
+      <div id="selection-detail" hidden>
+        <p id="selection-kind" class="selection-kind"></p>
+        <dl class="class-pair">
+          <div><dt>Etiqueta del conjunto de datos</dt><dd id="real-class"></dd></div>
+          <div><dt>Predicción del modelo</dt><dd id="predicted-class"></dd></div>
+        </dl>
+        <p id="selection-count" class="selection-count"></p>
+        <p id="interpretation" class="interpretation"></p>
+      </div>
+      <div class="findings" id="findings" role="group" aria-label="Hallazgos del experimento">
+        <button type="button" data-row="0" data-column="2">Ver el error más frecuente</button>
+        <button type="button" data-row="2" data-column="1">Explorar un caso de meningioma</button>
+      </div>
+      <p id="announcement" class="sr-only" role="status" aria-atomic="true"></p>
+    </section>
+  </div>
+
+  <section class="process" aria-labelledby="process-title">
+    <h2 id="process-title">Proceso en tres pasos</h2>
+    <ol class="process-steps">
+      <li>
+        <h3>Preparación de datos</h3>
+        <p>Retiramos 426 copias exactas mediante MD5. Agrupamos los cortes con la misma huella visual aHash antes de dividirlos en entrenamiento, validación y prueba.</p>
+      </li>
+      <li>
+        <h3>Entrenamiento de la CNN</h3>
+        <p>Ajustamos la CNN durante 15 épocas con 4,619 cortes y monitoreamos el desempeño con 988 cortes de validación.</p>
+      </li>
+      <li>
+        <h3>Evaluación en prueba</h3>
+        <p>Comparamos la CNN con la regla de referencia en los 990 cortes reservados. Usamos la matriz para identificar qué clases se confundieron.</p>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="scope">
+    <h2>Alcance de la evaluación</h2>
+    <p>El experimento corresponde a cortes 2D. La independencia por paciente y la validación externa quedan por verificar.</p>
+    <nav aria-label="Informe y código">
+      <a id="report-link">Leer el informe</a>
+      <a id="repository-link">Ver el repositorio</a>
+    </nav>
+  </footer>
+</div>
