@@ -34,7 +34,6 @@ h1 {
   color: var(--muted);
   font-size: clamp(.9rem, 2vw, 1.04rem);
   margin-top: .6rem;
-  max-width: 74ch;
 }
 
 .results { margin: 1.35rem 0 1.25rem; }
